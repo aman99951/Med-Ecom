@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Invoice: {{ invoice.invoice_number }}{% endblock %}
+
+{% block content %}
+<div class="container bg-light shadow-sm rounded mt-5 p-5" style="border: 1px solid #ddd;" id="invoice-content">
+    <!-- Invoice Header -->
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-6">
+            <h2 class="text-primary">Invoice</h2>
+            <p><strong>Invoice No:</strong> {{ invoice.invoice_number }}</p>
+            <p><strong>Order ID:</strong> {{ invoice.order.id }}</p>
+        </div>
+        <div class="col-md-6 text-end">
+            <p><strong>Issued Date:</strong> {{ invoice.issued_date }}</p>
+            <p><strong>Status:</strong> <span class="badge bg-warning text-dark">{{ invoice.status|title }}</span></p>
+        </div>
+    </div>
+
+    <!-- Billing & Shipping Information -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h4 class="text-dark">Billing Address</h4>
+            <p class="text-muted">{{ invoice.order.billing_address.address_1 }}, {{ invoice.order.billing_address.city }}</p>
+            <p class="text-muted">{{ invoice.order.billing_address.state }}, {{ invoice.order.billing_address.country }}</p>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-dark">Shipping Address</h4>
+            <p class="text-muted">{{ invoice.order.shipping_address.address_1 }}, {{ invoice.order.shipping_address.city }}</p>
+            <p class="text-muted">{{ invoice.order.shipping_address.state }}, {{ invoice.order.shipping_address.country }}</p>
+        </div>
+    </div>
+
+    <!-- Product and Pricing Details -->
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-dark">Order Details</h4>
+            <table class="table table-hover table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Variant</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                  
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in invoice.order.order_items.all %}
+                    <tr>
+                        <td>{{ item.variant.product.name }}</td>
+                        <td>{{ item.variant.potency }} {{ item.variant.unit.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.variant.price_usd }}</td>
+                      
+                        <td>${{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            {% if invoice.status == 'pending' %}
+                <a href="{% url 'mark_invoice_as_paid' invoice.id %}" class="btn btn-success">Mark as Paid</a>
+                <a href="{% url 'cancel_invoice' invoice.id %}" class="btn btn-danger">Cancel Invoice</a>
+            {% elif invoice.status == 'paid' %}
+                <p class="text-success">This invoice has been paid on {{ invoice.payment_date }}.</p>
+            {% elif invoice.status == 'canceled' %}
+                <p class="text-danger">This invoice was canceled.</p>
+            {% endif %}
+        </div>
+        <div class="col-md-6 text-end">
+            <h4 class="text-dark">Order Summary</h4>
+            <p><strong>Shipping Charges</strong> ${{invoice.order.shipping_method.cost}}</p>
+            {% if invoice.order.cart.discount_code %}
+            <p><strong>Discount ({{ invoice.order.cart.discount_code.code }}):</strong> -${{ invoice.order.cart.discount_code.discount_price }}</p>
+            {% endif %}
+            <p><strong>Total Amount Due:</strong> <span class="fw-bold">${{ invoice.order.total_cost }}</span></p>
+        </div>
+    </div>
+
+    <!-- Download PDF Button -->
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <button onclick="downloadPDF()" class="btn btn-primary btn-lg">Download Invoice as PDF</button>
+        </div>
+    </div>
+</div>
+
+<!-- Add the html2pdf.js library for PDF download functionality -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<script>
+    function downloadPDF() {
+        var element = document.getElementById('invoice-content');  // Select content to convert
+        html2pdf().from(element).set({
+            margin: 1,
+            filename: 'invoice_{{ invoice.invoice_number }}.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        }).save();
+    }
+</script>
+{% endblock %}

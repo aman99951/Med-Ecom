@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <nav aria-label="breadcrumb" >
+        <ol class="breadcrumb" style="background-color: #0072dc; padding: 5px 10px; border-radius: 5px;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" style="text-decoration: none; color: white;">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff;">Checkout</li>
+        </ol>
+    </nav>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Order Summary -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="card shadow-lg border-light">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Order Summary</h4>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for item in cart.items.all %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>{{ item.variant.product.name }}</strong>
+                                    <p class="mb-0 text-muted">{{ item.variant.potency }} {{ item.variant.unit }} ({{ item.quantity }} units)</p>
+                                </div>
+                                <span>${{ item.total_price }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="card-body">
+                        {% if discount_code %}
+                            <p class="text-success mb-2">
+                                {% if discount_code.discount_type == 'percentage' %}
+                                    Discount Applied: {{ discount_code.discount_percentage }}%
+                                {% elif discount_code.discount_type == 'price' %}
+                                    Discount Applied: ${{ discount_code.discount_price }}
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                        <div class="d-flex justify-content-end">
+                            <h4 class="mb-0 me-3">Total: ${{ total_cost_with_discount }}</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Address and Billing Address -->
+            <div class="col-md-4">
+                <div class="card shadow-lg border-light mb-4">
+                    <div class="card-body">
+                        <h4 class="text-primary">Shipping Address</h4>
+                        <div class="form-group">
+                            <label for="shipping_address" class="form-label">Select Shipping Address</label>
+                            <select id="shipping_address" name="shipping_address" class="form-select">
+                                {% for address in shipping_addresses %}
+                                    <option value="{{ address.id }}">
+                                        {{ address.address_1 }}, {{ address.city }}, {{ address.state }}, {{ address.postal_code }}, {{ address.country }} ({{ address.get_address_type_display }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-lg border-light mb-4">
+                    <div class="card-body">
+                        <h4 class="text-primary">Billing Address</h4>
+                        <div class="form-group">
+                            <label for="billing_address" class="form-label">Select Billing Address</label>
+                            <select id="billing_address" name="billing_address" class="form-select">
+                                {% for address in billing_addresses %}
+                                    <option value="{{ address.id }}">
+                                        {{ address.address_1 }}, {{ address.city }}, {{ address.state }}, {{ address.postal_code }}, {{ address.country }} ({{ address.get_address_type_display }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="col-md-12">
+                <div class="card shadow-lg border-light mb-4">
+                    <div class="card-body">
+                        <h4 class="text-primary">Payment Method</h4>
+                        <p><strong>Cash on Delivery</strong></p>
+                        <input type="hidden" name="payment_method" value="Cash on Delivery">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Method -->
+            <div class="col-md-12">
+                <div class="card shadow-lg border-light mb-4">
+                    <div class="card-body">
+                        <h4 class="text-primary">Shipping Method</h4>
+                        <div class="form-group">
+                            <label>Select Shipping Method</label>
+                            {% for method in shipping_methods %}
+                                <div class="form-check">
+                                    <input type="radio" id="shipping_method_{{ method.id }}" 
+                                           name="shipping_method" value="{{ method.id }}"
+                                           class="form-check-input" 
+                                           {% if method.id == selected_shipping_method_id %} checked {% endif %}>
+                                    <label for="shipping_method_{{ method.id }}" class="form-check-label">
+                                        ${{ method.cost }} - {{ method.name }} - {{ method.delivery_time }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Information -->
+            <div class="col-md-12">
+                <div class="card shadow-lg border-light mb-4">
+                    <div class="card-body">
+                        <h4 class="text-primary">Health Information</h4>
+                        <div class="form-group">
+                            <label for="weight" class="form-label">Weight (kg)</label>
+                            <input type="text" id="weight" name="weight" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="form-label">Sex</label>
+                            <select id="sex" name="sex" class="form-select">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="breastfeeding" name="breastfeeding" class="form-check-input">
+                            <label for="breastfeeding" class="form-check-label">Breastfeeding</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="smoker" name="smoker" class="form-check-input">
+                            <label for="smoker" class="form-check-label">Smoker</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="drug_allergies" name="drug_allergies" class="form-check-input">
+                            <label for="drug_allergies" class="form-check-label">Drug Allergies</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="allergies_description" class="form-label">Allergies Description</label>
+                            <textarea id="allergies_description" name="allergies_description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplements" class="form-label">Supplements</label>
+                            <textarea id="supplements" name="supplements" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Upload -->
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-lg border-light">
+                    <div class="card-body">
+                        <h4 class="text-primary">Attachments (optional)</h4>
+                        <input type="file" name="attachments" multiple class="form-control-file">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </div>
+    </form>
+</div>
+<style>
+    /* Body and Font Styles */
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: #f5f7fa;
+        color: #343a40;
+        margin: 0;
+        padding: 0;
+    }
+
+    .breadcrumb {
+        background-color: #0072dc;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        color: white;
+    }
+
+    .breadcrumb-item a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #cce7ff;
+    }
+
+    .breadcrumb-item.active {
+        color: #e9ecef;
+    }
+
+    /* Card Styles */
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background-color: #0072dc;
+        color: white;
+        border-bottom: none;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .list-group-item {
+        border: none;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .list-group-item span {
+        font-weight: 600;
+    }
+
+    /* Form Styles */
+    .form-label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #495057;
+    }
+
+    .form-control, .form-select {
+        border-radius: 6px;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #0072dc;
+        box-shadow: 0 0 5px rgba(0, 114, 220, 0.5);
+    }
+
+    .form-check-input {
+        margin-right: 10px;
+    }
+
+    .form-check-label {
+        font-size: 14px;
+    }
+
+    /* Button Styles */
+    .btn {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 25px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: white;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .btn-primary {
+        background-color: #0072dc;
+        border-color: #0072dc;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #005bb5;
+        border-color: #00408a;
+    }
+
+    .btn:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 114, 220, 0.5);
+    }
+
+    /* File Upload */
+    .form-control-file {
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 10px;
+    }
+
+    /* Health Information Styles */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    textarea.form-control {
+        resize: none;
+    }
+
+    /* Shipping and Billing Address */
+    .form-select {
+        height: auto;
+    }
+
+    /* Order Summary Styles */
+    h4 {
+        font-weight: 600;
+        color: #343a40;
+    }
+
+    /* Footer and General Adjustments */
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .d-flex {
+        gap: 10px;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container bg-white text-black">
+    <h2>Agent Dashboard</h2>
+    <p>Your current status: {{ agent.is_online|yesno:"Online,Offline" }}</p>
+    <form method="POST" action="{% url 'agent_toggle_status' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-info">
+            {% if agent.is_online %}
+                Go Offline
+            {% else %}
+                Go Online
+            {% endif %}
+        </button>
+    </form>
+</div>
+{% endblock %}

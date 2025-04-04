@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <!-- Carousel -->
+    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" >
+            <!-- Replace these items with your images -->
+            <div class="carousel-item active">
+                <img src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1591771377413/medicines-offers.jpg" class="d-block w-100" alt="Banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://t3.ftcdn.net/jpg/02/07/09/06/360_F_207090644_pzixjQM0iSPLdTTAjDT0DX4nXVMz7Non.jpg" class="d-block w-100" alt="Banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.freepik.com/free-vector/pharmaceutical-medicine-healthcare-template-vector-presentation_53876-117796.jpg" class="d-block w-100" alt="Banner 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+{% if top_selling_products %}
+<div class="container my-5">
+    <h2 class="text-center mb-4" style="color: #0072dc;">Top Selling Product</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {% for product in top_selling_products %}
+            <div class="col mb-4">
+                <div class="card shadow-sm custom-card position-relative">
+                    {% if product.variants.first.original_price_usd and product.variants.first.price_usd < product.variants.first.original_price_usd %}
+                        <div class="onsale-badge" >On Sale</div>
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text price-text">
+                            {% if product.variants.first.original_price_usd and product.variants.first.price_usd < product.variants.first.original_price_usd %}
+                                ${{ product.variants.first.price_usd }}
+                                <span class=" text-decoration-line-through" style="color: white; font-size: small;">${{ product.variants.first.original_price_usd }}</span>
+                            {% else %}
+                                ${{ product.variants.first.price_usd }}
+                            {% endif %}
+                        </p>
+                        {% if product.highest_potency != product.lowest_potency %}
+                        <p class="card-text potency-text" style="color: #000000">
+                            <span class="potency">{{ product.lowest_potency }}</span> {{ product.variants.first.unit.name }} - 
+                            <span class="potency">{{ product.highest_potency }}</span> {{ product.variants.last.unit.name }}
+                        </p>
+                        {% else %}
+                        <p class="card-text potency-text" style="color: #000000">
+                            <span class="potency">{{ product.lowest_potency }}</span> {{ product.variants.first.unit.name }}
+                        </p>
+                        {% endif %}
+                        <a href="{% url 'product_detail' product.id %}" class="btn buy-now-btn">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if featured_products %}
+    <div class="container my-5">
+        <h2 class="text-center mb-4" style="color: #0072dc;">Featured Products</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            {% for product in featured_products %}
+            <div class="col mb-4">
+                <div class="card shadow-sm custom-card position-relative">
+                    {% if product.variants.first.original_price_usd and product.variants.first.price_usd < product.variants.first.original_price_usd %}
+                        <div class="onsale-badge">On Sale</div>
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text price-text">
+                            {% if product.variants.first.original_price_usd and product.variants.first.price_usd < product.variants.first.original_price_usd %}
+                                ${{ product.variants.first.price_usd }}
+                                <span class=" text-decoration-line-through" style="color: white; font-size: small;">${{ product.variants.first.original_price_usd }}</span>
+                            {% else %}
+                                ${{ product.variants.first.price_usd }}
+                            {% endif %}
+                        </p>
+                        {% if product.highest_potency != product.lowest_potency %}
+                        <p class="card-text potency-text" style="color: #000000">
+                            <span class="potency">{{ product.lowest_potency }}</span> {{ product.variants.first.unit.name }} - 
+                            <span class="potency">{{ product.highest_potency }}</span> {{ product.variants.last.unit.name }}
+                        </p>
+                        {% else %}
+                        <p class="card-text potency-text" style="color: #000000">
+                            <span class="potency">{{ product.lowest_potency }}</span> {{ product.variants.first.unit.name }}
+                        </p>
+                        {% endif %}
+                        <a href="{% url 'product_detail' product.id %}" class="btn buy-now-btn">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+
+{% if sale_products %}
+<div class="container my-5">
+    <h2 class="text-center mb-4" style="color: #0072dc;">On Sale Products</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        {% for product in sale_products %}
+            <div class="col mb-4">
+                <div class="card shadow-sm custom-card position-relative">
+                    {% if product.variants.first.original_price_usd and product.variants.first.price_usd < product.variants.first.original_price_usd %}
+                        <div class="onsale-badge">On Sale</div>
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text price-text">
+                            {% if product.variants.first.original_price_usd and product.variants.first.price_usd < product.variants.first.original_price_usd %}
+                                ${{ product.variants.first.price_usd }}
+                                <span class=" text-decoration-line-through" style="color: white; font-size: small;">${{ product.variants.first.original_price_usd }}</span>
+                            {% else %}
+                                ${{ product.variants.first.price_usd }}
+                            {% endif %}
+                        </p>
+                        {% if product.highest_potency != product.lowest_potency %}
+                        <p class="card-text potency-text" style="color: #000000">
+                            <span class="potency">{{ product.lowest_potency }}</span> {{ product.variants.first.unit.name }} - 
+                            <span class="potency">{{ product.highest_potency }}</span> {{ product.variants.last.unit.name }}
+                        </p>
+                        {% else %}
+                        <p class="card-text potency-text" style="color: #000000">
+                            <span class="potency">{{ product.lowest_potency }}</span> {{ product.variants.first.unit.name }}
+                        </p>
+                        {% endif %}
+                        <a href="{% url 'product_detail' product.id %}" class="btn buy-now-btn">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select all elements with the class 'potency'
+        const potencies = document.querySelectorAll('.potency');
+
+        potencies.forEach(potency => {
+            const value = parseFloat(potency.textContent); // Parse the text content as a float
+            // Check if the value is a whole number
+            if (value % 1 === 0) {
+                potency.textContent = value.toFixed(0); // Show as an integer if it is whole
+            } else {
+                potency.textContent = value.toFixed(2); // Show with two decimal places
+            }
+        });
+    });
+</script>
+
+<style>
+    h2 {
+        color: #ffffff;
+    }
+
+    .carousel-inner img {
+        /*height: auto;*/
+        max-height: 450px;
+        object-fit: cover;
+        border-radius: 20px;
+        width: 800px;
+    }
+
+    .product-img {
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 40px;
+    }
+
+    .btn {
+        border-radius: 20px;
+        color: #ffffff;
+        background-color: #0072dc;
+        /*border-color: #000000;*/
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background-color: #0072dc;
+       /* border-color: #d0ff00;*/
+        color: #ffffff;
+    }
+
+    .card-body {
+        flex-grow: 1; /* Ensures the card body stretches equally */
+      }
+
+    .custom-card {    
+    background: #eeeded; /* Transparent background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
+    color: #000000;
+    text-align: center;
+    padding: 10px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    }
+
+    .onsale-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #dc3545;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 0.75rem;
+        font-weight: bold;
+    }
+
+    .price-text {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .potency-text {
+        font-size: 0.975rem;
+        color: #f2f2f9;
+    }
+    .text-muted{
+        font-size: large;
+   
+    }
+</style>
+{% endblock %}

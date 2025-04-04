@@ -1,0 +1,147 @@
+<!-- templates/admin/sales_report.html -->
+
+{% extends 'admin/base_site.html' %}
+
+{% block title %}Sales Report{% endblock %}
+
+{% block content %}
+<style>
+    /* Ensure full-width layout for the content */
+    .full-width-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Style the form to be responsive */
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    button {
+        flex: 1;
+        min-width: 150px;
+        padding: 8px;
+    }
+
+    button {
+        flex: none;
+        width: auto;
+        background-color: #020202;
+        color: white;
+        border: 1px solid white;
+        cursor: pointer;
+        padding: 10px 15px;
+    }
+
+     button:hover{
+        background-color: #fffbfb;
+        color: black;
+     }
+
+    /* Style the table to be full-width */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #f4f4f4;
+        color: black;
+    }
+
+    /* Responsive table */
+    @media (max-width: 768px) {
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        table thead {
+            display: none;
+        }
+
+        table, table tbody, table tr, table td {
+            display: block;
+        }
+
+        table tr {
+            margin-bottom: 10px;
+        }
+
+        table td {
+            text-align: right;
+            padding-left: 50%;
+            position: relative;
+        }
+
+        table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-right: 10px;
+            white-space: nowrap;
+            font-weight: bold;
+            text-align: left;
+        }
+    }
+</style>
+
+<div class="full-width-container">
+    <h1>Admin Sales Report</h1>
+
+    <form method="GET">
+        <input type="text" name="q" placeholder="Search by product or category" value="{{ search_query }}">
+        <input type="text" name="category" placeholder="Category" value="{{ category_query }}">
+        <label for="date_from">From:</label>
+        <input type="date" name="date_from" value="{{ date_from }}">
+        <label for="date_to">To:</label>
+        <input type="date" name="date_to" value="{{ date_to }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Variant</th>
+                <th>Total Quantity Sold</th>
+                <th>Total Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if report_data %}
+                {% for item in report_data %}
+                    <tr>
+                        <td>{{ item.product }}</td>
+                        <td>{{ item.variant.unit }} - {{ item.variant.potency }}mg</td>
+                        <td>{{ item.total_quantity }}</td>
+                        <td>{{ item.total_revenue }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No data available.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

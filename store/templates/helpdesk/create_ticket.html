@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container chat-request-container py-5">
+    <div class="chat-box p-4 mx-auto" style="max-width: 600px;">
+        <h2 class="text-center mb-4">Submit a Ticket</h2>
+        
+        <form method="POST" enctype="multipart/form-data" class="ticket-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="subject" class="form-label">Subject:</label>
+                {{ form.subject }}
+            </div>
+
+            <div class="form-group">
+                <label for="deparment" class="form-label">Department:</label>
+                {{ form.deparment }}
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="form-label">Description:</label>
+                {{ form.description }}
+            </div>
+
+            <div class="form-group">
+                <label for="attachments" class="form-label">Attachments:</label>
+                {{ form.attachments }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit Ticket</button>
+        </form>
+    </div>
+
+    <div class="card-footer text-center mt-3">
+        <ul class="list-unstyled">
+          <li><a href="{% url 'ticket_list' %}" class="btn btn-outline-light"><i class="fas fa-list"></i> Your Tickets</a></li>
+        </ul>
+      </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .chat-request-container {
+        background: rgba(245, 239, 239, 0.123);
+        border-radius: 10px;
+        overflow: hidden;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+        padding: 10px;
+    }
+
+    .chat-box {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary {
+        background-color: #0095f6;
+        border-color: #0095f6;
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 576px) {
+        .chat-box {
+            padding: 15px;
+        }
+
+        .btn-primary {
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}
+

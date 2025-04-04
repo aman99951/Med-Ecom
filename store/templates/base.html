@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>{% block title %}Medicine E-commerce{% endblock %}</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+    <style>
+     body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 800px;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    filter: blur(0px); /* Adjust the blur level as needed */
+    z-index: -1;
+}
+
+       header a{
+        text-decoration: none;
+        color: white;
+       }
+       header a:hover{
+        color: #797a7b;
+       }
+       header a i{
+        font-size: large;
+       }
+
+       .nav a{
+        color:rgb(255, 255, 255);
+       }
+       .nav {
+        background-color: #ffffff;
+       }
+       .nav a:hover{
+        color: #d4d4d4;
+       }
+       .dropdown-menu a{
+        color: rgb(255, 255, 255);
+       }
+       #content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+        footer {
+    background: rgb(0, 0, 0); /* Transparent background */
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(15px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 200px;
+}
+.dropdown-menu{
+           border: none;
+        }
+        .search-container {
+            text-align: center;
+            margin-top: 10px;position: relative;
+        }
+        
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #827f7f;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 50px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            color: #827f7f;
+            font-size: 20px;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 10px 10px 10px 45px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none; /* Remove border */
+            background-color: #0072dc; /* Button color */
+            color: white; /* Text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            height: 100%; /* Match button height with input */
+            border-left: 1px solid #827f7f; /* Divider between input and button */
+            border-radius: 0 8px 8px 0; /* Rounded edges on the right */
+        }
+        
+        .search-container button:hover {
+            background-color: #0b0b0b;
+        }
+        
+        
+
+        .autocomplete-items {
+    position: absolute;
+    border: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 200px; /* Limits height and allows scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    background-color: rgba(55, 55, 55, 0.388);
+    width: 100%; /* Adjust width as needed */
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(125px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 0px solid rgba(255, 255, 255, 0.3); /* Optional border */
+    color: rgb(43, 40, 40);
+    scrollbar-width: none;
+    
+}
+
+.autocomplete-items a {
+    padding: 10px;
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px solid #d4d4d4;
+    transition: background-color 0.2s ease;
+}
+
+.autocomplete-items a:hover {
+    background-color: #f0f0f0;
+    border-radius: 10px; /* Keeps hover style consistent with rounded edges */
+    color: black;
+}
+
+
+
+.custom-card {
+    border: none;
+    background: #f9f9f9;
+    transition: transform 0.2s;
+}
+
+.custom-card:hover {
+    transform: scale(1.05);
+}
+
+.review-text {
+    color: #555;
+    font-size: 14px;
+}
+
+.rating-text .fa-star {
+    margin-right: 2px;
+}
+
+.text-muted {
+    color: #888 !important;
+}
+
+
+
+      </style>
+</head>
+<body>
+    <header style="background-color: #ffffff;" class="text-black p-3">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <!-- Logo and Site Title: Always Visible -->
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    {% if site_settings.logo %}
+                        <img src="{{ site_settings.logo.url }}" alt="Site Logo" class="img-fluid me-3" style="height: 60px;">
+                    {% endif %}
+                    <h1 class="h4 mb-0">
+                        {{ site_settings.site_title }}
+                    </h1>
+                </div>
+
+
+
+                 <!-- Toll-Free Number in the Center -->
+                 <span class="mx-4 text-dark fw-bold" style="font-size: 18px;">
+                    Toll-Free: <strong>1800-123-4567</strong>
+                </span>
+    
+                <nav class="d-flex flex-wrap align-items-center">
+                    <!-- Left Links -->
+                    <a href="{% url 'home' %}" class="me-3">
+                        <i class="fas fa-home" style="color: black; font-size: 24px; width: 24px; height: 24px;"></i>
+                    </a>
+                    <a href="{% url 'cart' %}" class="me-3 position-relative">
+                        <i class="fas fa-shopping-cart" style="color: black; font-size: 24px; width: 24px; height: 24px;"></i>
+                        {% if cart_items_count > 0 %}
+                            <span class="badge bg-success position-absolute top-0 start-100 translate-middle">
+                                {{ cart_items_count }}
+                            </span>
+                        {% endif %}
+                    </a>
+    
+                   
+    
+                    <!-- User Dropdown -->
+                    <div class="dropdown me-3">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user" style="color: black; font-size: 24px; width: 24px; height: 24px;"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown" style="background-color: #ffffff; color: #0072dc;">
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'order_list' %}">
+                                        <i class="fas fa-shopping-bag" style="color: black; font-size: 24px;"></i> Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'invoice_list' %}">
+                                        <i class="fas fa-receipt" style="color: black; font-size: 24px;"></i> Invoices
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'create_ticket' %}">
+                                        <i class="fas fa-headset" style="color: black; font-size: 24px;"></i> HelpDesk
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'user_chat_request' %}">
+                                        <i class="fas fa-comments" style="color: black; font-size: 24px;"></i> Live Chat
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'logout' %}">
+                                        <i class="fas fa-sign-out-alt" style="color: black; font-size: 24px;"></i> Logout
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'login' %}">
+                                        <i class="fas fa-sign-in-alt" style="color: black; font-size: 24px;"></i> Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'register' %}">
+                                        <i class="fas fa-user-plus" style="color: black; font-size: 24px;"></i> Register
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'user_chat_request' %}">
+                                        <i class="fas fa-comments" style="color: black; font-size: 24px;"></i> Live Chat
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+    
+                    <!-- Profile Image -->
+                    <a style="padding-left: 6px;" href="{% url 'profile' %}">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.Bo5gMo2MDR3GDp28toJnhwHaHk&pid=Api&P=0&h=180" width="30px" height="30px" style="border-radius: 50%;">
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+
+  <!-- Menu Section Below Header -->
+<div class="py-2" style="background-color: #0072dc;">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <!-- Toggle button for mobile view -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- HOW TO ORDER Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" style="color: #ffffff;" href="#" id="howToOrderDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                HOW TO ORDER
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="howToOrderDropdown">
+                                <li><a class="dropdown-item" style="color: #0072dc;" href="#">Option 1</a></li>
+                                <li><a class="dropdown-item" style="color: #0072dc;" href="#">Option 2</a></li>
+                                <li><a class="dropdown-item" style="color: #0072dc;" href="#">Option 3</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- RX UPLOAD Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" style="color: #ffffff;" href="#" id="rxUploadDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                RX UPLOAD
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="rxUploadDropdown">
+                                <li><a class="dropdown-item" style="color: #0072dc;" href="#">Option 1</a></li>
+                                <li><a class="dropdown-item" style="color: #0072dc;" href="#">Option 2</a></li>
+                                <li><a class="dropdown-item" style="color: #0072dc;" href="#">Option 3</a></li>
+                            </ul>
+                        </li>
+
+                       
+                      
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about_us' %}" style="color: #ffffff;">ABOUT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'faq' %}" style="color: #ffffff;">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'terms' %}" style="color: #ffffff;">TERM & CONDITIONS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+
+
+    
+    
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="search-2">
+            <div class="search-container">
+                <form method="GET">
+                    <div class="input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" name="q" id="searchInput" placeholder="Type Your Prescription drug name (Eliquis, Tadalafill, etc..)" autocomplete="off">
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+                <div id="autocomplete-list" class="autocomplete-items"></div>
+                <div id="no-results" class="no-results text-center text-black" style="display: none;">No results found</div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    
+    </div>
+
+    <!-- Content will be injected here -->
+    <div class="container content my-5" style="background-color: transparent;">
+        {% block content %}
+       
+
+        {% endblock %}
+    </div>
+
+<!-------------------------Customer Review Section----------------------->
+    <div class="container my-5">
+        <h2 class="text-center mb-4" style="color: #0072dc;">Customer Reviews</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <!-- Customer Review Card 1 -->
+            <div class="col mb-4">
+                <div class="card shadow-sm custom-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title" style="color: #000;">John Doe</h5>
+                        <p class="card-text review-text" style="font-size: 14px; color: #555;">
+                            "Absolutely amazing product! High quality and exceeded my expectations."
+                        </p>
+                        <p class="card-text rating-text" style="font-size: 16px; color: #FFD700;">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </p>
+                        <p class="text-muted" style="font-size: 12px;">Posted on January 15, 2025</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Customer Review Card 2 -->
+            <div class="col mb-4">
+                <div class="card shadow-sm custom-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title" style="color: #000;">Jane Smith</h5>
+                        <p class="card-text review-text" style="font-size: 14px; color: #555;">
+                            "Good value for money. Would definitely recommend to my friends."
+                        </p>
+                        <p class="card-text rating-text" style="font-size: 16px; color: #FFD700;">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </p>
+                        <p class="text-muted" style="font-size: 12px;">Posted on January 12, 2025</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Customer Review Card 3 -->
+            <div class="col mb-4">
+                <div class="card shadow-sm custom-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title" style="color: #000;">Emily Johnson</h5>
+                        <p class="card-text review-text" style="font-size: 14px; color: #555;">
+                            "The product is decent. Delivery was fast, but the packaging could improve."
+                        </p>
+                        <p class="card-text rating-text" style="font-size: 16px; color: #FFD700;">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </p>
+                        <p class="text-muted" style="font-size: 12px;">Posted on January 10, 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+<!---------------------------------About Medical Ecommerce--------------------------------->
+
+    <div class="container my-5 text-center">
+        <h2 style="color: #0072dc; font-weight: bold;">Welcome To The Medical Ecommerce</h2>
+        <h3 style="color: #333; margin-top: 10px;">Your access to affordable brand & generic medicines</h3>
+        <p style="margin-top: 20px; font-size: 16px; line-height: 1.8; color: #555;">
+            Medical Ecommerce is a cheap meds is not a pharmacy but prescription referral services that provides direct access to cost-effective prescription & Over the Counter drugs. 
+            Medical Ecommerce Cheap Meds provides prescription and OTC drugs through leading licensed Pharmacies located in Canada, Turkey, Mauritius, Australia, India, United States, and United Kingdom. 
+            We have been serving customers from USA & other countries for more than 10 years. Offshore Cheap Meds and its affiliated dispensing pharmacies are verified and accredited by PharmacyChecker.com.
+        </p>
+    </div>
+
+
+
+<!-----------------------------------------------------Why Shoop with us---------------------->
+    
+
+    <div class="container my-5 py-4" style="background-color: #A1E0FF; border-radius: 8px;">
+        <h2 class="text-center mb-4" style="color: #000000; font-weight: bold;">Why Shop with EcommerceMedicine.com?</h2>
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <ul style="list-style: none; padding: 0; font-size: 16px; color: #333; line-height: 1.8;">
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Save Up To 90% On Your RX & OTC Drugs</li>
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Certified Canadian, USA & International Suppliers.</li>
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Open 5 Days A Week</li>
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Licensed Pharmacist Consultations</li>
+                </ul>
+            </div>
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <ul style="list-style: none; padding: 0; font-size: 16px; color: #333; line-height: 1.8;">
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> 100% Secure Transactions</li>
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Shipping All Across USA</li>
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Call my doctor - No Cost Service</li>
+                    <li><i class="fa fa-check-circle" style="color: #E37222;"></i> Certified by Pharmacychecker.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+   
+
+    <footer class="text-center p-4" style="background-color: #0072dc; color: white;">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="row text-left">
+                <!-- About Us Column -->
+                <div class="col-md-3">
+                    <img src="{{ site_settings.logo.url }}" alt="Company Logo" style="max-width: 100px; margin-bottom: 10px;">
+                    <h5>Medical Ecommerce</h5>
+                    <p>We are committed to providing the best healthcare products and services to our customers.</p>
+                </div>
+
+                
+
+
+                
+    
+                <!-- Account Column -->
+                <div class="col-md-3">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" style="color: white;">My Orders</a></li>
+                        <li><a href="#" style="color: white;">Refill Prescription</a></li>
+                        <li><a href="#" style="color: white;">Sign In</a></li>
+                        <li><a href="#" style="color: white;">Sign Up</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Column -->
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Location:</strong> 1234 Main St, City, State, ZIP</li>
+                        <li><strong>Email:</strong> info@example.com</li>
+                        <li><strong>Call:</strong> (123) 456-7890</li>
+                        <li><strong>Fax:</strong> (123) 456-7891</li>
+                    </ul>
+                </div>
+    
+                <!-- Business Hours Column -->
+                <div class="col-md-3">
+                    <h5>Business Hours</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Monday-Friday:</strong> 9:00 AM - 6:00 PM</li>
+                        <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="mt-4">
+                <p>&copy; 2024 {{ site_settings.site_title }}. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchInput");
+            const autocompleteList = document.getElementById("autocomplete-list");
+            const noResultsDiv = document.getElementById("no-results");
+    
+            searchInput.addEventListener("input", function() {
+                const query = this.value;
+    
+                // Remove any existing suggestions
+                autocompleteList.innerHTML = "";
+                noResultsDiv.style.display = "none";
+    
+                if (!query) {
+                    return false;
+                }
+    
+                // Fetch search suggestions from the server
+                fetch(`{% url 'search_suggestions' %}?q=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length === 0) {
+                            noResultsDiv.style.display = "block";
+                        } else {
+                            // Populate the autocomplete list with suggestions
+                            data.forEach(item => {
+                                const suggestionLink = document.createElement("a");
+                                suggestionLink.href = item.url;
+                                suggestionLink.innerText = item.name;
+                                autocompleteList.appendChild(suggestionLink);
+                            });
+                            noResultsDiv.style.display = "none";
+                        }
+                    });
+            });
+    
+            document.addEventListener("click", function(e) {
+                // Close the autocomplete list if the user clicks outside of it
+                if (e.target !== searchInput) {
+                    autocompleteList.innerHTML = "";
+                    noResultsDiv.style.display = "none";
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

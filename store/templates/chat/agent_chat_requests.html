@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% block content %}
+<div class="container my-4 bg-light text-black rounded shadow-sm">
+    <h4 class="text-center mb-4 title">Pending Chat Requests</h4>
+    {% if chat_requests %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;"> <!-- Scrollable container -->
+                <table class="table table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Serial No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Request Time</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for request in chat_requests %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>
+                                    {% if request.user %}
+                                        {{ request.user.first_name }} {{ request.user.last_name }}
+                                    {% else %}
+                                        {{ request.guest_name }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if request.user %}
+                                        {{ request.user.profile.mobile }}
+                                    {% else %}
+                                        {{ request.guest_phone }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if request.user %}
+                                        {{ request.user.username }}
+                                    {% else %}
+                                        {{ request.guest_email }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ request.timestamp|localtime }}</td>
+                                <td>
+                                    <button type="submit" name="request_id" value="{{ request.id }}" class="btn btn-success">Accept</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            No pending chat requests.
+        </div>
+    {% endif %}
+</div>
+
+<div class="text-center mt-4">
+    <form action="{% url 'agent_logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+</div>
+
+<style>
+    /* Container styling */
+    .container {
+        max-width: 900px; /* Maximum width for the container */
+        margin: auto; /* Center the container */
+        padding: 20px; /* Padding for the container */
+    }
+
+    /* Title styling */
+    .title {
+        font-weight: bold; /* Bold font for the title */
+        text-transform: uppercase; /* Uppercase letters for the title */
+        color: #007bff; /* Primary color for the title */
+        border-bottom: 2px solid #007bff; /* Underline the title */
+        padding-bottom: 10px; /* Padding at the bottom of the title */
+    }
+
+    /* Table styles */
+    .table {
+        margin-top: 20px; /* Space above the table */
+    }
+
+    /* Hover effect for table rows */
+    .table-hover tbody tr:hover {
+        background-color: #e2f0fe; /* Light blue background on hover */
+    }
+
+    /* Table cell styles */
+    .table th {
+        background-color: #343a40; /* Dark background for headers */
+        color: white; /* White text color for headers */
+    }
+
+    .table td {
+        vertical-align: middle; /* Center content vertically */
+    }
+
+    /* Button styles */
+    .btn {
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    }
+
+    .btn-success:hover {
+        background-color: #218838; /* Darker green on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+    .btn-danger {
+        background-color: #dc3545; /* Red background for logout */
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333; /* Darker red on hover */
+    }
+
+    /* Alert styling */
+    .alert {
+        margin-top: 20px; /* Space above the alert */
+        font-weight: bold; /* Bold text for alert */
+    }
+
+    /* Logout button styling */
+    .text-center {
+        margin-top: 30px; /* Space above the logout button */
+    }
+</style>
+{% endblock %}

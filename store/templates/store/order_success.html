@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Success{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5" style="background-color: black; color: white;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #0072dc; padding: 5px 10px; border-radius: 5px;">
+            <li class="breadcrumb-item" ><a href="{% url 'home' %}" style="text-decoration: none; color: white;">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff;">Order Confirmation</li>
+        </ol>
+    </nav>
+    <div class="celebration">
+        <h2 class="mb-4">🎉 Thank you for your purchase! 🎉</h2>
+        <p class="mb-4">Your order has been successfully placed.</p>
+        <a href="{% url 'order_list' %}" style="background-color: black; color: #d0ff00; border: 1px solid white;" class="btn btn-lg mb-4">Watch Your Orders</a>
+    </div>
+    <div class="balloons">
+        <!-- Balloons will be dynamically added here by JavaScript -->
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Balloons animation
+    const balloonColors = ['#FF5733', '#FFBD33', '#28B463', '#3498DB', '#9B59B6'];
+    const balloonCount = 20;
+    
+    function createBalloon() {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.bottom = -Math.random() * 50 + 'px';
+        document.querySelector('.balloons').appendChild(balloon);
+        
+        // Animate balloon
+        balloon.animate([
+            { transform: 'translateY(0)' },
+            { transform: 'translateY(-100vh)' }
+        ], {
+            duration: Math.random() * 3 + 3 * 1000, // 3 to 6 seconds
+            easing: 'ease-in-out'
+        }).onfinish = () => {
+            balloon.remove();
+        };
+    }
+
+    for (let i = 0; i < balloonCount; i++) {
+        createBalloon();
+    }
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .celebration {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .balloon {
+        position: absolute;
+        width: 50px;
+        height: 70px;
+        border-radius: 50%;
+        opacity: 0.8;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        animation: float 6s infinite ease-in-out; /* Adjusted animation speed */
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100vh); }
+    }
+
+    .btn {
+        background-color: black;
+        color: #d0ff00;
+        border: 1px solid white;
+    }
+
+    .btn:hover {
+        background-color: #333;
+        color: #d0ff00;
+        border-color: #fff;
+    }
+</style>
+{% endblock %}

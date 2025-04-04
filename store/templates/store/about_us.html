@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - {{ site_setting.site_title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="mb-4 text-primary fw-bold">Welcome to {{ site_setting.site_title }}</h1>
+        <p class="lead">Your trusted partner for all your medical and healthcare needs.</p>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="https://storage.googleapis.com/beckermedia/2021/12/1ed83bb3-allied-healthcare-professional.jpg" width="500px" height="300px" class="img-fluid rounded shadow" alt="Healthcare Image">
+        </div>
+        <div class="col-md-6">
+            <p class="">
+                Established with a commitment to superior service and quality products, we strive to provide the best 
+                healthcare solutions to our community.
+            </p>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="text-center mb-4">
+        <h3 class="text-primary fw-bold">Our Mission</h3>
+        <p>Enhancing health and well-being with high-quality medical products and exceptional service.</p>
+    </div>
+
+    <!-- Unique Features -->
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-person-check text-primary display-5"></i>
+                <h5 class="mt-3 fw-bold">Expert Staff</h5>
+                <p>Experienced pharmacists offering personalized care and expert advice.</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-box-seam text-success display-5"></i>
+                <h5 class="mt-3 fw-bold">Wide Product Range</h5>
+                <p >From medicines to medical equipment, we provide quality healthcare products.</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-clock-history text-warning display-5"></i>
+                <h5 class="mt-3 fw-bold">Convenience</h5>
+                <p>Quick service, easy refills, and multiple payment options.</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-people text-danger display-5"></i>
+                <h5 class="mt-3 fw-bold">Community Engagement</h5>
+                <p >Health screenings, educational programs, and outreach initiatives.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commitment Section -->
+    <div class="text-center mt-5">
+        <h3 class="text-primary fw-bold">Our Commitment to You</h3>
+        <p >
+            Your health and satisfaction are our top priorities. Whether you need assistance with medications or 
+            healthcare advice, we are here to support you.
+        </p>
+        <p class="fw-bold">Thank you for choosing {{ site_setting.site_title }}. We look forward to serving you!</p>
+    </div>
+</div>
+
+<!-- Bootstrap Icons (Ensure Bootstrap Icons are included in your project) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+{% endblock %}

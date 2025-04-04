@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container chat-request-container py-5">
+    <div class="chat-box p-4 mx-auto" style="max-width: 600px;">
+        <h2 class="text-center mb-4">Start a Chat</h2>
+
+        {% if online_agents %}
+            <!-- Form for starting a chat when agents are online -->
+            <form method="POST" class="start-chat-form">
+                {% csrf_token %}
+                <div class="alert alert-info text-center">
+                    <p>An agent is available and will be assigned to you automatically.</p>
+                </div>
+
+                {% if not request.user.is_authenticated %}
+                <div class="form-group">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone:</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email (this will be used as your username):</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+            {% endif %}
+
+                <button type="submit" class="btn btn-primary btn-block">Start Live Chat</button>
+            </form>
+        {% else %}
+            <!-- Form when no agents are online to collect user details -->
+            <div class="alert alert-warning text-center">
+                <p>No agents are currently online. Please leave your details, and we will contact you soon.</p>
+            </div>
+            <form method="POST" action="{% url 'user_chat_request' %}" class="offline-form">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone:</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="problem_description" class="form-label">Problem Description:</label>
+                    <textarea name="problem_description" class="form-control" rows="4" placeholder="Describe your problem" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .chat-request-container {
+        background: rgba(245, 239, 239, 0.123); /* Transparent background */
+        border-radius: 10px;
+        overflow: hidden;
+        backdrop-filter: blur(15px); /* Blur effect */
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .chat-box {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary {
+        background-color: #0095f6;
+        border-color: #0095f6;
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+
+    .alert {
+        font-size: 14px;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .offline-form, .start-chat-form {
+        padding: 20px 0;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 576px) {
+        .chat-box {
+            padding: 15px;
+        }
+
+        .btn-primary {
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}

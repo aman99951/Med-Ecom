@@ -1,0 +1,291 @@
+category,unit,product_name,brand_name,type,sub_description,how_to_use,side_effects,drug_interactions,precautions,featured,sale,top_selling,potency,number_of_tablets,price_inr,price_usd,country_of_origin,manufacturer
+Category1,MG,Product A,Brand X,Type1,Description A,Use A,,,Keep away from sunlight,True,False,False,500.0,30,500.0,6.5,Canada,India
+Category2,MG,Product B,Brand Y,Type2,Description B,Use B,Nausea,Drug Y,Consult a doctor,True,False,False,250.0,60,300.0,4.0,Canada,USA
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,5.0,10,274.0,10.28,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,5.0,30,274.0,28.77,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,5.0,60,274.0,53.43,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,5.0,90,274.0,61.65,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,4,100.0,3.38,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,8,100.0,6.0,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,12,100.0,7.88,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,20,100.0,12.19,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,40,100.0,22.5,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,72,100.0,37.13,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,20.0,88,100.0,41.25,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,10.0,10,188.0,9.31,Canada,Ipca Laboratories Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,10.0,30,188.0,22.18,Canada,Ipca Laboratories Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,10.0,60,188.0,34.12,Canada,Ipca Laboratories Ltd
+ERECTILE DYSFUNCTION,MG,Generic Tadalafil,Generic,RX,,,,,,True,False,False,10.0,90,188.0,46.53,Canada,Ipca Laboratories Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,4,100.0,3.38,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,8,100.0,6.38,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,12,100.0,8.44,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,20,100.0,12.19,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,40,100.0,22.5,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,72,100.0,37.13,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,100.0,88,100.0,41.25,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,4,80.0,3.0,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,8,80.0,4.5,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,12,80.0,6.3,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,20,80.0,9.75,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,40,80.0,18.0,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,72,80.0,29.7,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Generic Sildenafil,Generic,RX,,,,,,True,False,False,50.0,88,80.0,33.0,Canada,Cipla Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,100.0,4,444.0,20.81,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,100.0,8,444.0,33.3,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,100.0,12,444.0,45.79,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,100.0,20,444.0,69.38,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,50.0,4,220.0,10.31,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,50.0,8,220.0,16.5,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,50.0,12,220.0,22.69,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Brand Caverta,Brand,RX,,,,,,True,False,False,50.0,20,220.0,34.38,Canada,Sun Pharmaceutical Industries Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,20.0,4,304.0,8.21,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,20.0,8,304.0,15.32,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,20.0,12,304.0,21.34,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,20.0,20,304.0,27.36,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,20.0,40,304.0,50.16,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,20.0,80,304.0,91.2,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,10.0,4,150.0,4.05,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,10.0,8,150.0,7.56,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,10.0,12,150.0,10.53,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,10.0,20,150.0,13.5,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,10.0,40,150.0,24.75,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Generic Vardenafil,Generic,RX,,,,,,True,False,False,10.0,80,150.0,45.0,Canada,Macleods Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,1,548.0,17.13,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,8,548.0,116.45,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,15,548.0,154.13,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,20,548.0,23.75,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,40,548.0,411.0,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,72,548.0,678.15,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Cialis,Brand,RX,,,,,,True,False,False,20.0,80,548.0,753.5,Canada,Lupin Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,1,1200.0,37.5,Canada,Mylan Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,8,1200.0,255.0,Canada,Mylan Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,12,1200.0,337.5,Canada,Mylan Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,20,1200.0,525.0,Canada,Mylan Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,40,1200.0,900.0,Canada,Mylan Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,72,1200.0,1485.0,Canada,Mylan Pharmaceuticals Pvt Ltd
+ERECTILE DYSFUNCTION,MG,Brand Viagra,Brand,RX,,,,,,True,False,False,100.0,88,1200.0,1650.0,Canada,Mylan Pharmaceuticals Pvt Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,5.0,10,543.0,15.27,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,5.0,30,543.0,36.65,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,5.0,60,543.0,67.2,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,5.0,90,543.0,91.63,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,2.5,10,435.0,12.23,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,2.5,30,435.0,29.36,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,2.5,60,435.0,53.83,Canada,Pfizer Ltd
+Anticoagulant,MG,Brand Eliquis ,Brand,RX,,,,,,True,False,False,2.5,90,435.0,73.41,Canada,Pfizer Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,2.5,10,165.0,5.57,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,2.5,30,165.0,13.92,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,2.5,60,165.0,22.28,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,2.5,90,165.0,30.63,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,2.5,180,165.0,55.69,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,5.0,10,209.0,8.7,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,5.0,30,209.0,21.75,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,5.0,60,209.0,34.8,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,5.0,90,209.0,47.85,Canada,Cipla Ltd
+Anticoagulant,MG,Generic Apixaban,Generic,RX,,,,,,True,False,False,5.0,180,209.0,87.0,Canada,Cipla Ltd
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,25.0,10,711.0,20.0,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,25.0,30,711.0,51.99,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,25.0,60,711.0,95.99,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,25.0,90,711.0,131.98,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,25.0,180,711.0,239.96,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,10.0,10,587.0,16.51,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,10.0,30,587.0,46.23,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,10.0,60,587.0,79.25,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,10.0,90,587.0,108.96,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Jardiance ,Brand,RX,,,,,,True,False,False,10.0,180,587.0,198.11,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,850.0,10,64.0,2.16,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,850.0,30,64.0,5.62,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,850.0,60,64.0,10.37,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,850.0,90,64.0,14.26,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,850.0,180,64.0,25.92,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,500.0,15,33.0,2.23,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,500.0,30,33.0,3.71,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,500.0,60,33.0,5.94,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,500.0,90,33.0,6.68,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,500.0,180,33.0,8.91,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,1.0,15,68.0,5.1,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,1.0,30,68.0,8.5,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,1.0,60,68.0,13.6,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,1.0,90,68.0,15.3,Canada,Lupin Ltd
+Antidiabetes,MG,Generic Metformin,Generic,RX,,,,,,True,False,False,1.0,180,68.0,20.4,Canada,Lupin Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,550.0,15,375.0,10.55,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,550.0,30,375.0,19.69,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,550.0,60,375.0,33.75,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,550.0,90,375.0,46.41,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,550.0,180,375.0,84.38,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,1050.0,15,380.0,10.69,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,1050.0,30,380.0,19.95,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,1050.0,60,380.0,34.2,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,1050.0,90,380.0,47.03,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet,Brand,RX,,,,,,True,False,False,1050.0,180,380.0,85.5,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet XR CP,Brand,RX,,,,,,True,False,False,1100.0,15,310.0,8.72,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet XR CP,Brand,RX,,,,,,True,False,False,1100.0,30,310.0,16.28,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet XR CP,Brand,RX,,,,,,True,False,False,1100.0,60,310.0,27.9,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet XR CP,Brand,RX,,,,,,True,False,False,1100.0,90,310.0,38.36,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Janumet XR CP,Brand,RX,,,,,,True,False,False,1100.0,180,310.0,69.75,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,25.0,7,275.0,7.73,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,25.0,28,275.0,24.75,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,25.0,56,275.0,45.38,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,25.0,84,275.0,61.88,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,50.0,7,290.0,8.16,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,50.0,28,290.0,26.1,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,50.0,56,290.0,47.85,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,50.0,84,290.0,65.25,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,100.0,7,295.0,8.3,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,100.0,28,295.0,26.55,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,100.0,56,295.0,48.68,Canada,MSD Pharmaceuticals Pvt Ltd
+Antidiabetes,MG,Brand Januvia,Brand,RX,,,,,,True,False,False,100.0,84,295.0,66.38,Canada,MSD Pharmaceuticals Pvt Ltd
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,30.0,10,119.0,4.46,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,30.0,30,119.0,11.6,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,30.0,60,119.0,21.42,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,30.0,90,119.0,29.45,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,30.0,180,119.0,53.55,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,60.0,10,174.0,6.53,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,60.0,30,174.0,16.97,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,60.0,60,174.0,31.32,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,60.0,90,174.0,43.07,Canada,MSN Laboratories
+GERD & Acid Reflux,MG,Generic Dexlansoprazole,Generic,RX,,,,,,True,False,False,60.0,180,174.0,78.3,Canada,MSN Laboratories
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,100.0,30,3135.0,88.17,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,100.0,60,3135.0,129.32,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,100.0,90,3135.0,176.34,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,62.5,30,3135.0,88.17,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,62.5,60,3135.0,129.32,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,62.5,90,3135.0,176.34,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,25.0,30,3135.0,88.17,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,25.0,60,3135.0,129.32,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anti Asthma And Copd Products,MG,Brand Trelegy Ellipta Powder For Inhalation,Brand,RX,,,,,,True,False,False,25.0,90,3135.0,176.34,Canada,Glaxo SmithKline Pharmaceuticals Ltd
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,75.0,10,718.0,16.83,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,75.0,30,718.0,43.75,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,75.0,60,718.0,80.78,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,75.0,90,718.0,111.07,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,75.0,180,718.0,201.94,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,110.0,10,356.0,10.01,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,110.0,30,356.0,26.03,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,110.0,60,356.0,48.06,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,110.0,90,356.0,66.08,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,110.0,180,356.0,120.15,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,150.0,10,398.0,11.19,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,150.0,30,398.0,29.1,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,150.0,60,398.0,53.73,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,150.0,90,398.0,73.88,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Brand Pradaxa,Brand,RX,,,,,,True,False,False,150.0,180,398.0,134.33,Canada,Boehringer Ingelheim
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,75.0,10,320.0,9.0,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,75.0,30,320.0,23.4,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,75.0,60,320.0,43.2,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,75.0,90,320.0,59.4,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,75.0,180,320.0,108.0,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,110.0,10,350.0,9.84,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,110.0,30,350.0,25.59,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,110.0,60,350.0,47.25,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,110.0,90,350.0,64.97,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,110.0,180,350.0,118.13,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,150.0,10,380.0,10.69,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,150.0,30,380.0,27.79,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,150.0,60,380.0,51.3,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,150.0,90,380.0,70.54,Canada,Lupin Ltd
+Anticoagulant,MG,Generic Dabigatran Etexilate,Generic,RX,,,,,,True,False,False,150.0,180,380.0,128.25,Canada,Lupin Ltd
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,60.0,14,538.0,15.13,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,60.0,28,538.0,26.23,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,60.0,56,538.0,48.42,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,60.0,70,538.0,55.48,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,60.0,84,538.0,60.53,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,90.0,14,538.0,15.13,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,90.0,28,538.0,26.23,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,90.0,56,538.0,48.42,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,90.0,70,538.0,55.48,Canada,AstraZeneca
+Anticoagulant,MG,Brand Brilinta,Brand,RX,,,,,,True,False,False,90.0,84,538.0,60.53,Canada,AstraZeneca
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,60.0,10,203.0,5.71,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,60.0,30,203.0,14.84,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,60.0,60,203.0,27.41,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,60.0,90,203.0,37.68,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,60.0,180,203.0,68.51,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,90.0,10,258.0,7.26,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,90.0,30,258.0,18.87,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,90.0,60,258.0,34.83,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,90.0,90,258.0,47.89,Canada,Intas Pharmaceuticals Ltd
+Anticoagulant,MG,Generic Ticagrelor,Generic,RX,,,,,,True,False,False,90.0,180,258.0,87.08,Canada,Intas Pharmaceuticals Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,3.0,10,3170.0,89.16,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,3.0,30,3170.0,213.98,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,3.0,60,3170.0,392.29,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,3.0,90,3170.0,534.94,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,7.0,10,3520.0,99.0,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,7.0,30,3520.0,237.6,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,7.0,60,3520.0,435.6,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,7.0,90,3520.0,594.0,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,14.0,10,3870.0,108.84,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,14.0,30,3870.0,261.23,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,14.0,60,3870.0,478.91,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Rybelsus,Brand,RX,,,,,,True,False,False,14.0,90,3870.0,653.06,Canada,Novo Nordisk India Pvt Ltd
+Antidiabetes,MG,Brand Tradjenta,Brand,RX,,,,,,True,False,False,5.0,10,339.0,11.12,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Tradjenta,Brand,RX,,,,,,True,False,False,5.0,30,339.0,31.15,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Tradjenta,Brand,RX,,,,,,True,False,False,5.0,60,339.0,53.39,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Tradjenta,Brand,RX,,,,,,True,False,False,5.0,90,339.0,73.41,Canada,Boehringer Ingelheim
+Antidiabetes,MG,Brand Tradjenta,Brand,RX,,,,,,True,False,False,5.0,180,339.0,133.48,Canada,Boehringer Ingelheim
+Anti Asthma And Copd Products,MG,Generic Salbutamol,Generic,RX,,,,,,True,False,False,100.0,200,176.0,16.5,Canada,Cipla Ltd
+Anti Asthma And Copd Products,MG,Generic Salbutamol,Generic,RX,,,,,,True,False,False,100.0,400,176.0,26.4,Canada,Cipla Ltd
+Anti Asthma And Copd Products,MG,Generic Salbutamol,Generic,RX,,,,,,True,False,False,100.0,600,176.0,29.7,Canada,Cipla Ltd
+Anti Asthma And Copd Products,MG,Generic Salbutamol,Generic,RX,,,,,,True,False,False,100.0,800,176.0,26.4,Canada,Cipla Ltd
+Prostate Cancer,MG,Generic Abiraterone Acetate,Generic,RX,,,,,,True,False,False,250.0,120,13000.0,487.5,Canada,Sun Pharmaceutical Industries Ltd
+Prostate Cancer,MG,Generic Abiraterone Acetate,Generic,RX,,,,,,True,False,False,250.0,240,13000.0,893.75,Canada,Sun Pharmaceutical Industries Ltd
+Prostate Cancer,MG,Generic Abiraterone Acetate,Generic,RX,,,,,,True,False,False,250.0,360,13000.0,1218.75,Canada,Sun Pharmaceutical Industries Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,60.0,10,275.0,10.31,Canada,Leeford Healthcare Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,60.0,30,275.0,24.75,Canada,Leeford Healthcare Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,60.0,60,275.0,45.38,Canada,Leeford Healthcare Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,60.0,90,275.0,61.88,Canada,Leeford Healthcare Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,120.0,10,833.0,23.43,Canada,Lupin Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,120.0,30,833.0,56.23,Canada,Lupin Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,120.0,60,833.0,103.08,Canada,Lupin Ltd
+Obesity/Weight Loss,MG,Generic Orlistat,Generic,RX,,,,,,True,False,False,120.0,90,833.0,140.57,Canada,Lupin Ltd
+GERD & Acid Reflux,MG,Generic Pantoprazole,Generic,RX,,,,,,True,False,False,40.0,10,110.0,3.09,Canada,Cipla Ltd
+GERD & Acid Reflux,MG,Generic Pantoprazole,Generic,RX,,,,,,True,False,False,40.0,30,110.0,8.04,Canada,Cipla Ltd
+GERD & Acid Reflux,MG,Generic Pantoprazole,Generic,RX,,,,,,True,False,False,40.0,60,110.0,14.85,Canada,Cipla Ltd
+GERD & Acid Reflux,MG,Generic Pantoprazole,Generic,RX,,,,,,True,False,False,40.0,90,110.0,20.42,Canada,Cipla Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,40.0,180,110.0,37.13,Canada,Cipla Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,40.0,15,213.0,7.99,Canada,Pfizer Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,40.0,30,213.0,12.78,Canada,Pfizer Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,40.0,60,213.0,23.43,Canada,Pfizer Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,40.0,90,213.0,31.95,Canada,Pfizer Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,20.0,15,145.0,5.44,Canada,Pfizer Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,20.0,30,145.0,8.7,Canada,Pfizer Ltd
+GERD & Acid Reflux,MG,Brand NexiumÂ ,Brand,RX,,,,,,True,False,False,20.0,60,145.0,15.95,Canada,Pfizer Ltd
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,20.0,90,145.0,21.75,Canada,Pfizer Ltd
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,10.0,30,82.99,4.67,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,10.0,60,82.99,7.47,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,10.0,90,82.99,10.27,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,10.0,180,82.99,18.67,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,20.0,30,420.0,23.63,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,20.0,60,420.0,37.8,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,20.0,90,420.0,51.98,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,20.0,180,420.0,94.5,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,40.0,30,650.0,36.56,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,40.0,60,650.0,58.5,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,40.0,90,650.0,80.44,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,40.0,180,650.0,146.25,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,80.0,10,455.0,25.59,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,80.0,30,455.0,76.78,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,80.0,60,455.0,122.85,Canada,Abbott
+Anticholesterol,MG,Generic Atorvastatin,Generic,RX,,,,,,True,False,False,80.0,90,455.0,168.92,Canada,Abbott
+Prostate Cancer,MG,Generic Enzalutamide,Generic,RX,,,,,,True,False,False,80.0,180,455.0,307.13,Canada,Abbott
+Prostate Cancer,MG,Generic Enzalutamide,Generic,RX,,,,,,True,False,False,40.0,4,856.0,24.08,Canada,Cipla Ltd
+Prostate Cancer,MG,Generic Enzalutamide,Generic,RX,,,,,,True,False,False,40.0,28,856.0,134.82,Canada,Cipla Ltd
+Prostate Cancer,MG,Generic Enzalutamide,Generic,RX,,,,,,True,False,False,40.0,56,856.0,24717.0,Canada,Cipla Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,40.0,84,856.0,337.05,Canada,Cipla Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,5.0,15,192.0,6.3,Canada,Sun Pharmaceutical Industries Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,5.0,30,192.0,10.08,Canada,Sun Pharmaceutical Industries Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,5.0,60,192.0,20.16,Canada,Sun Pharmaceutical Industries Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,5.0,90,192.0,27.72,Canada,Sun Pharmaceutical Industries Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,5.0,180,192.0,50.4,Canada,Sun Pharmaceutical Industries Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,10.0,15,125.0,5.86,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,10.0,30,125.0,9.38,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,10.0,60,125.0,18.75,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,10.0,90,125.0,25.78,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,10.0,180,125.0,46.88,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,20.0,10,190.0,6.23,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,20.0,30,190.0,14.96,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,20.0,60,190.0,29.93,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,20.0,90,190.0,41.15,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,20.0,180,190.0,74.81,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,40.0,10,369.0,12.11,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,40.0,30,369.0,29.06,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,40.0,60,369.0,58.12,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,40.0,90,369.0,79.91,Canada,Leeford Healthcare Ltd
+Anticholesterol,MG,Generic Rosuvastatin,Generic,RX,,,,,,True,False,False,40.0,180,369.0,145.26,Canada,Leeford Healthcare Ltd

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #0072dc; padding: 5px 10px; border-radius: 5px;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" style="text-decoration: none; color: white;">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff;">Login</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-10">
+            <div class="row d-flex align-items-stretch" style="min-height: 500px;">
+                <!-- Left Column: Image -->
+                <div class="col-md-6 d-flex align-items-center justify-content-center bg-light p-3" style="border-radius: 10px;">
+                    <img src="https://www.canadapharmacypro.com/frontend/images/login.jpg" alt="Pharmacy Icon" class="img-fluid"
+                        style="max-width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+
+                 <!-- Right Column: Login Form -->
+<div class="col-md-6 d-flex justify-content-center align-items-center bg-white p-3" 
+style="border-radius: 10px; min-height: 600px;"> 
+<div class="card-Login w-100">
+   <div class="card-body">
+       <h2 class="my-4 text-center">Login</h2>
+       <form method="post">
+           {% csrf_token %}
+           {{ form.non_field_errors }}
+
+           <!-- Email Field -->
+           <div class="mb-3 text-start">
+               <label for="id_username" class="form-label">Email</label>
+               {{ form.username }}
+               {{ form.username.errors }}
+           </div>
+
+           <!-- Password Field -->
+           <div class="mb-3 text-start">
+               <label for="id_password" class="form-label">Password</label>
+               {{ form.password }}
+               {{ form.password.errors }}
+           </div>
+
+           <!-- Login Button -->
+           <button type="submit" class="btn btn-primary w-100 py-2">
+               Login
+           </button>
+           <br/><br/>
+
+           <!-- Links -->
+           <div class="text-center">
+               <a href="{% url 'register' %}" class="custom-link" style="color: #7D858C;">Don't have an account? Register here</a> <br>
+               <a href="{% url 'guest_checkout' %}" class="custom-link" style="color: #7D858C;">Guest Checkout</a>
+           </div>
+       </form>
+   </div>
+</div>
+</div> <!-- End Right Column -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-Login {
+        background: rgba(245, 245, 245, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        color: #333;
+        width: 100%;
+        min-height: 600px; /* Increased height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+
+    .card input {
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        padding: 12px;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card input:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+        background-color: #004085;
+        box-shadow: none;
+    }
+
+    .custom-link {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s, text-decoration 0.3s;
+    }
+
+    .custom-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}

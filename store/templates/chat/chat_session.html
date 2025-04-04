@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container chat-container">
+    <h4 class="text-center text-white py-3">Live Chat Support</h4>
+
+    <!-- Chat Box -->
+    <div class="chat-box p-3">
+        {% for message in messages %}
+            <div class="message mb-3 {% if message.sender == user %}my-message{% else %}other-message{% endif %}">
+                <div class="message-content p-3 shadow">
+                    <div class="d-flex align-items-center mb-2">
+                        <span class="badge badge-info mr-2">{% if message.sender %}
+                            {{ message.sender.first_name }}
+                        {% else %}
+                            {{ message.session.guest_name }}
+                        {% endif %}</span>
+                        <span class=" small text-white">{{ message.timestamp|date:"H:i" }}</span>
+                    </div>
+                    <p class="message-text ">{{ message.message }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Message Input -->
+    <form method="POST" class="message-form mt-4">
+        {% csrf_token %}
+        <div class="input-group">
+            <textarea name="message" style="color: white;" class="form-control shadow" placeholder="Type your message here..." required></textarea>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary shadow">Send</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .chat-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), 
+                radial-gradient(circle at top right, rgba(0, 0, 255, 0.2), transparent 50%), 
+                radial-gradient(circle at bottom left, rgba(255, 0, 0, 0.2), transparent 50%);
+    background-blend-mode: overlay, screen;
+    border-radius: 20px;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  
+}
+.chat-box {
+    height: 450px;
+    overflow-y: auto;
+    background: black;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid white;
+    resize: none; /* IE and Edge */
+    scrollbar-width: thin; /* Firefox */
+}
+
+    .message {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: flex-start;
+    }
+
+    .my-message {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    .other-message {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .message-content {
+        max-width: 75%;
+        border-radius: 15px;
+        padding: 15px;
+        font-size: 15px;
+        background: linear-gradient(145deg, #e6e6e6, #ffffff); /* 3D bubble effect */
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -6px -6px 12px rgba(255, 255, 255, 0.7);
+        position: relative;
+        transition: all 0.2s;
+    }
+
+    .message-content:hover {
+        transform: translateY(-3px);
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.8);
+    }
+
+    .my-message .message-content {
+        background: linear-gradient(145deg, #212121, #333aff);
+        color: white;
+    }
+
+    .other-message .message-content {
+        background: linear-gradient(145deg, #282727, #b10000);
+        color: rgb(255, 255, 255);
+    }
+
+    .badge-info {
+        background-color: #1e90ff;
+        color: white;
+        border-radius: 12px;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .message-text {
+        margin: 10px 0 0;
+        line-height: 1.6;
+    }
+
+    .message-form {
+        padding: 20px 0;
+    }
+
+    textarea {
+        color: white;
+        height: 50px;
+        font-size: 14px;
+        resize: none;
+        overflow: hidden; /* Hide scrollbar */
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    
+
+    .form-control {
+        border-radius: 25px;
+        padding: 12px;
+        resize: none;
+        border: none;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1), -2px -2px 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-primary {
+        background: linear-gradient(145deg, #1e90ff, #0095f6);
+        border-color: transparent;
+        border-radius: 25px;
+        padding: 5px 20px;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1), -3px -3px 8px rgba(255, 255, 255, 0.7);
+        transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+        transform: scale(1.05);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+    .message-form {
+    margin-top: 20px;
+}
+
+.form-control {
+    border-radius: 25px;
+    padding: 10px;
+    height: 45px;
+    resize: none;
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.3), inset -3px -3px 8px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: inset 3px 3px 12px rgba(0, 0, 0, 0.5), inset -3px -3px 12px rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group-append .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #ff4d4d, #b30000);
+    border: none;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), -3px -3px 8px rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.input-group-append .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.input-group-append .btn:active {
+    transform: scale(0.98);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), inset -2px -2px 5px rgba(255, 255, 255, 0.3);
+}
+
+
+</style>
+
+{% endblock %}

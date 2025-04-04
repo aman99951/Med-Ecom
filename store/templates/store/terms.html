@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Terms and Conditions{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-primary fw-bold">Terms and Conditions</h1>
+    <p>Welcome to <strong>{{ site_setting.site_title }}</strong>. Before using our services or making a purchase, please read the following terms and conditions carefully. By accessing or using our services, you agree to be bound by these terms and conditions:</p>
+
+    <div  class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>1. Prescription Medications</h4>
+        <ul>
+            <li>Prescription medications will only be dispensed upon presentation of a valid prescription from a licensed healthcare provider.</li>
+            <li>It is the responsibility of the customer to ensure that prescriptions are accurate and up-to-date.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>2. Product Availability</h4>
+        <ul>
+            <li>We make every effort to maintain adequate stock of all products, but availability may vary and change without notice.</li>
+            <li>If a product is out of stock, we will notify customers and provide alternatives if available.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>3. Product Information</h4>
+        <ul>
+            <li>We strive to provide accurate and up-to-date product information, including ingredients, usage instructions, and potential side effects.</li>
+            <li>Customers should read product labels and consult a healthcare professional if necessary.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>4. Privacy Policy</h4>
+        <ul>
+            <li>We are committed to protecting your privacy. Personal information is used only for processing orders and improving services.</li>
+            <li>We do not share or sell personal information to third parties unless required by law.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>5. Payment and Billing</h4>
+        <ul>
+            <li>Payment must be made in full at the time of purchase unless otherwise arranged.</li>
+            <li>We accept cash, credit/debit cards, and other secure electronic payments.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>6. Returns and Refunds</h4>
+        <ul>
+            <li>If you are not satisfied with a product, contact us within <strong>7 days</strong> for assistance.</li>
+            <li>Returns and exchanges are subject to certain conditions. Prescription medications cannot be returned once dispensed.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>7. Health and Safety</h4>
+        <ul>
+            <li>We adhere to all laws and regulations governing medical product sales.</li>
+            <li>Customers must use products according to manufacturer instructions.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-lg border-0 p-4 mt-4 rounded-4">
+        <h4>8. Changes to Terms and Conditions</h4>
+        <p>We reserve the right to modify these terms at any time without prior notice. Changes are effective immediately upon posting on our website.</p>
+    </div>
+
+    <p class="card shadow-lg border-0 p-4 mt-4 rounded-4"><strong>By using our services, you agree to these terms. If you have any questions, please contact us. Thank you for choosing <strong>{{ site_setting.site_title }}</strong> for your healthcare needs.</strong></p>
+</div>
+{% endblock %}

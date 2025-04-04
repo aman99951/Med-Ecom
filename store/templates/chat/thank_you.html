@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container thank-you-page text-center py-5">
+    <div class="thank-you-message p-4">
+        <h2 class="mb-4">Thank You!</h2>
+        <p class="lead">We have received your problem description. An agent will get back to you as soon as possible.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back to Home</a>
+    </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .thank-you-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+    }
+
+    .thank-you-message {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: #28a745;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        color: #333;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 576px) {
+        .thank-you-message {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+{% endblock %}

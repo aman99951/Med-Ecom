@@ -1,0 +1,38 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <h2>User Messages</h2>
+  <div id="user-messages">
+      {% if messages %}
+          {% for message in messages %}
+              <p>
+                  <strong>User {{ message.user.username }}:</strong> {{ message.message }} 
+                  <em>({{ message.timestamp }})</em>
+              </p>
+          {% endfor %}
+      {% else %}
+          <p>No new messages.</p>
+      {% endif %}
+  </div>
+
+  {% if messages %}
+      <h3>Reply to a User</h3>
+      <form method="POST">
+          {% csrf_token %}
+          <label for="user_id">Select User:</label>
+          <select name="user_id" id="user_id" required>
+              <option value="" disabled selected>Select a user</option>
+              {% for message in messages %}
+                  <option value="{{ message.user.id }}">{{ message.user.username }}</option>
+              {% endfor %}
+          </select>
+          <br><br>
+          <label for="reply_message">Your Reply:</label>
+          <input type="text" name="reply_message" id="reply_message" placeholder="Type your reply..." required>
+          <br><br>
+          <button type="submit">Send Reply</button>
+      </form>
+  {% else %}
+      <p>No users to reply to at this time.</p>
+  {% endif %}
+{% endblock %}

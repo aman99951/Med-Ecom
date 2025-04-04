@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-primary text-white py-2 px-3 rounded">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff;">Profile</li>
+        </ol>
+    </nav>
+
+    <h2 class="text-center text-primary mb-4">User Profile</h2>
+
+    {% if messages %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- User Information Section -->
+    <div class="card shadow-sm p-4 mb-4">
+        <h4 class="text-primary mb-3">User Information</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="user_name" class="form-label fw-bold">Name</label>
+                <input type="text" id="user_name" class="form-control" value="{{ user.first_name }}" readonly>
+            </div>
+            <div class="col-md-4">
+                <label for="user_email" class="form-label fw-bold">Email</label>
+                <input type="email" id="user_email" class="form-control" value="{{ user.email }}" readonly>
+            </div>
+            <div class="col-md-4">
+                <label for="user_phone" class="form-label fw-bold">Phone Number</label>
+                <input type="text" id="user_phone" class="form-control" value="{{ user.profile.mobile }}" readonly>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Information Section -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="card shadow-sm p-4 mb-4">
+            <h4 class="text-primary mb-3">Billing Address</h4>
+            <div class="row">
+                {% for field in address_form %}
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" name="save_address" class="btn btn-primary w-40">Save Address</button>
+        </div>
+    </form>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="card shadow-sm p-4 mb-4">
+            <h4 class="text-primary mb-3">Shipping Address</h4>
+            <div class="row">
+                {% for field in shipping_form %}
+                <div class="col-md-4 mb-3">
+                    <label class="form-label fw-bold">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" name="save_shipping" class="btn btn-primary w-40">Save Shipping Info</button>
+        </div>
+    </form>
+
+    <!-- Password Change Section -->
+    <button class="btn btn-outline-primary w-100 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#changePasswordForm">
+        Change Password
+    </button>
+    <div class="collapse" id="changePasswordForm">
+        <form method="post">
+            {% csrf_token %}
+            <div class="card shadow-sm p-4 mb-4">
+                <h4 class="text-primary mb-3">Change Password</h4>
+                <div class="row">
+                    {% for field in password_form %}
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                        <div class="text-danger">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" name="change_password" class="btn btn-primary w-40">Update Password</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Account Deletion Section -->
+    <form id="delete-account-form" method="post" action="{% url 'delete_account' %}">
+        {% csrf_token %}
+        <button type="button" class="btn btn-danger w-40" onclick="confirmDeleteAccount()">Delete Account</button>
+    </form>
+</div>
+
+<script>
+    function confirmDeleteAccount() {
+        if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+            document.getElementById('delete-account-form').submit();
+        }
+    }
+</script>
+
+<style>
+    /* Enhanced Styling */
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .breadcrumb {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    .btn-primary {
+        background-color: #0072dc;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+        background-color: #005bb5;
+    }
+
+    .btn-outline-primary {
+        border: 2px solid #0072dc;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #0072dc;
+        color: white;
+    }
+
+    h4 {
+        font-size: 1.3rem;
+        border-bottom: 2px solid #0072dc;
+        padding-bottom: 5px;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+</style>
+{% endblock %}

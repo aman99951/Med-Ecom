@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-primary">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Order Confirmation</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Left Section: Order Details -->
+        <div class="col-lg-8 mb-4">
+            <div class="card border-light shadow-sm rounded">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Order Summary</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <strong>Order ID:</strong> {{ order.id }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Total Cost:</strong> ${{ order.total_cost }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Payment Method:</strong> {{ order.payment_method }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Order Status:</strong> {{ order.status }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Shipping Method:</strong> ${{ order.shipping_method.cost }} - {{ order.shipping_method.name }} - {{ order.shipping_method.delivery_time }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Estimated Delivery Time:</strong> {{ order.shipping_method.delivery_time }}
+                        </li>
+                    </ul>
+<hr>
+                    <h6 class="mt-4">Shipping Address</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <strong>Address Type:</strong> {{ order.shipping_address.get_address_type_display }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Address Line 1:</strong> {{ order.shipping_address.address_1 }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Address Line 2:</strong> {{ order.shipping_address.address_2 }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>City:</strong> {{ order.shipping_address.city }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>State:</strong> {{ order.shipping_address.state }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Postal Code:</strong> {{ order.shipping_address.postal_code }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Country:</strong> {{ order.shipping_address.country }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% if order.get_tracking_url %}
+                <p>Track your order: <a href="{{ order.get_tracking_url }}" target="_blank">Click Here</a></p>
+            {% else %}
+                <p>Tracking details not available.</p>
+            {% endif %}
+        
+        </div>
+   
+
+        <!-- Right Section: Order Items -->
+        <div class="col-lg-4 mb-4">
+            <div class="card border-light shadow-sm rounded">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Order Items</h5>
+                </div>
+                <div class="card-body">
+                    
+                    <ul class="list-unstyled">
+                        {% for item in order_items %}
+                        <li class="d-flex align-items-center mb-3">
+                            <div class="me-5">
+                                {% if item.variant.product.images.first %}
+                                    <img src="{{ item.variant.product.images.first.image.url }}" class="img-fluid rounded" alt="{{ item.variant.product.name }}" style="max-height: 80px; object-fit: cover;">
+                                {% else %}
+                                    <img src="" class="img-fluid rounded" alt="Default Image" style="max-height: 80px; object-fit: cover;">
+                                {% endif %}
+                            </div>
+                        <div>
+                            <strong>Product:</strong> {{ item.variant.product.name }}<br>
+                            <strong>Variant:</strong> {{ item.variant.potency }} {{ item.variant.unit.name }}<br>
+                            <strong>Quantity:</strong> {{ item.quantity }}<br>
+                            <strong>{{ item.variant.number_of_tablets }}</strong> tablets
+                        </div>
+                        </li>
+                    {% empty %}
+                        <li>No items found in this order.</li>
+                    {% endfor %}
+                    </ul>
+
+                    <div class="text-center mt-4">
+                        <a href="{% url 'reorder' order.id %}" class="btn btn-outline-primary me-2">Reorder Items</a>
+                        {% if not order.is_canceled %}
+                        <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger">Cancel Order</a>
+                        {% else %}
+                        <span class="text-muted">Order Canceled</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Health Information Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-light shadow-sm rounded">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Health Information</h5>
+                </div>
+                <div class="card-body">
+                    {% if health_info %}
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <strong>Weight:</strong> {{ health_info.weight }} kg
+                        </li>
+                        <li class="mb-2">
+                            <strong>Sex:</strong> {{ health_info.get_sex_display }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Breastfeeding:</strong> {{ health_info.breastfeeding|yesno:"Yes,No" }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Smoker:</strong> {{ health_info.smoker|yesno:"Yes,No" }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Drug Allergies:</strong> {{ health_info.drug_allergies|yesno:"Yes,No" }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Allergies Description:</strong> {{ health_info.allergies_description }}
+                        </li>
+                        <li class="mb-2">
+                            <strong>Supplements:</strong> {{ health_info.supplements }}
+                        </li>
+                    </ul>
+                    {% else %}
+                    <p>No health information available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attachments Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-light shadow-sm rounded">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Attachments</h5>
+                </div>
+                <div class="card-body">
+                    {% if attachments %}
+                        <ul class="list-unstyled">
+                            {% for attachment in attachments %}
+                                <li class="mb-2">
+                                    <a href="{{ attachment.file.url }}" target="_blank" class="text-primary">{{ attachment.file.name }}</a>
+                                    <span class="text-muted">Uploaded on {{ attachment.uploaded_at|date:"F j, Y" }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No attachments available for this order.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-light shadow-sm rounded">
+                <div class="card-header bg-primary text-dark">
+                    <h5 class="mb-0">Leave a Review</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Trigger Button to show review form -->
+                    <button id="show-review-form" class="btn btn-dark text-light">Drop Review</button>
+
+                    <!-- Hidden Review Form -->
+                    <form id="review-form" method="post" class="mb-3" style="display: none;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_comment" class="form-label">Review:</label>
+                            {{ form.comment|safe }}
+                        </div>
+                        <button type="submit" class="btn btn-dark text-light">Submit Review</button>
+                    </form>
+
+                    <!-- Displaying Submitted Reviews -->
+                    {% if order.review %}
+                    <div class="mt-4">
+                        <h6>Submitted Review</h6>
+                        <div class="border p-3 mb-3 rounded bg-light">
+                            <p><strong>Review:</strong> {{ order.review.comment }}</p>
+                            <p><strong>Date:</strong> {{ order.review.created_at|localtime }}</p>
+                        </div>
+                    </div>
+                    {% else %}
+                        <p>No reviews yet. Be the first to leave a review!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript to toggle review form visibility
+    document.getElementById("show-review-form").addEventListener("click", function() {
+        var reviewForm = document.getElementById("review-form");
+        reviewForm.style.display = reviewForm.style.display === "none" ? "block" : "none";
+    });
+</script>
+{% endblock %}

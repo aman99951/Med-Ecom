@@ -1,0 +1,84 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center text-light">Ticket: {{ ticket.subject }}</h2>
+    
+    <div class="card">
+        <div class="card-header" style="background-color: black; color: #ffffff;">
+            <h5>{{ ticket.subject }}</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Department:</strong> {{ ticket.department }}</p>  
+            <p><strong>Description:</strong> {{ ticket.description }}</p>
+            <p><strong>Status:</strong> {{ ticket.get_status_display }}</p>
+            <p><small><strong>Created At:</strong> {{ ticket.created_at|date:"Y-m-d" }}</small></p>
+        </div>
+
+        <!-- Chat section -->
+        <div class="card-footer">
+            <h6>Messages:</h6>
+            <ul class="list-unstyled">
+                {% for reply in replies %}
+                <li class="{% if reply.agent %} agent-message {% else %} user-message {% endif %}">
+                    <strong>{{ reply.created_at|date:"Y-m-d H:i" }}:</strong>
+                    {% if reply.agent %}
+                        <span class="text-success">Agent:</span>
+                    {% else %}
+                        <span class="text-primary"></span>
+                    {% endif %}
+                    {{ reply.message }}
+                </li>
+                {% empty %}
+                <li>No messages yet.</li>
+                {% endfor %}
+            </ul>
+
+            {% if ticket.status != 'Closed' %}
+            <!-- Message Form -->
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="message"><strong>Agent Message:</strong></label>
+                    {{ form.message }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Send Message</button>
+            </form>
+            {% elif error %}
+            <p class="text-danger">{{ error }}</p>
+            {% else %}
+            <p class="text-danger">This ticket is closed. No further messages can be sent.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for auto-prefilling 'Agent: ' -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let messageInput = document.querySelector("[name='message']");
+        
+        if (messageInput) {
+            // Check if it is empty before adding "Agent: "
+            if (messageInput.value.trim() === "") {
+                messageInput.value = "Agent: ";
+            }
+
+            // Ensure "Agent: " is always at the start
+            messageInput.addEventListener("input", function() {
+                if (!messageInput.value.startsWith("Agent: ")) {
+                    messageInput.value = "Agent: " + messageInput.value.replace(/^Agent: /, "");
+                }
+            });
+
+            // When clicking inside, move cursor to the end
+            messageInput.addEventListener("focus", function() {
+                setTimeout(() => {
+                    messageInput.setSelectionRange(messageInput.value.length, messageInput.value.length);
+                }, 10);
+            });
+        }
+    });
+</script>
+
+{% endblock %}

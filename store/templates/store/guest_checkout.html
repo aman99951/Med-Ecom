@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}Guest Checkout{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-primary text-white rounded py-2 px-3">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff;">Guest Checkout</li>
+        </ol>
+    </nav>
+
+    <!-- Display error message if exists -->
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- User Registration Section -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h4 class="text-primary mb-4">Register</h4>
+                <div class="row">
+                    {% for field in register_form %}
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Information Section -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h4 class="text-primary mb-4">Address</h4>
+                <div class="row">
+                    {% for field in address_form %}
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Shipping Information Section -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h4 class="text-primary mb-4">Shipping Address</h4>
+                <div class="row">
+                    {% for field in shipping_form %}
+                        <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+            <button type="submit" 
+                style="background-color: #0072dc; color: azure; border: 1px solid white; width: 300px; height: 60px; font-size: 18px; margin: auto;" 
+                class="btn">
+                Register and Checkout
+            </button>
+        </div>
+        
+    </form>
+</div>
+
+<style>
+    .breadcrumb {
+        background-color: #0072dc !important;
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+
+    .card {
+        background-color: #f8f9fa; /* Light background for readability */
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .card h4 {
+        font-weight: 600;
+        color: #0072dc;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #000; /* Label color set to black */
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-control:focus {
+        border-color: #0072dc;
+        box-shadow: 0 0 5px rgba(0, 114, 220, 0.5);
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+        background-color: #004085;
+        box-shadow: none;
+    }
+
+    .custom-link {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s, text-decoration 0.3s;
+    }
+
+    .custom-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+    
+</style>
+{% endblock %}

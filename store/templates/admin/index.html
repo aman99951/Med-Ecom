@@ -1,0 +1,12 @@
+{% extends "admin/index.html" %}
+{% block content %}
+    {{ block.super }}
+    <div class="module">
+        <h2>Custom Links</h2>
+        <ul>
+            {% for link in custom_links %}
+                <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

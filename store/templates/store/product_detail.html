@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+
+{% block title %}Product Details{% endblock %}
+
+{% block content %}
+<style>
+    .product-container {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .breadcrumb-container {
+        background-color: #0072dc;
+        border-radius: 5px;
+        margin-bottom: 20px;   
+    }
+
+    .breadcrumb a {
+        color: #d0ff00;
+        text-decoration: none;
+    }
+
+    .product-title {
+        color: #343a40;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .product-description {
+        color: #6c757d;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .carousel-inner img {
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .variant-container {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .variant-header {
+        color: #343a40;
+        font-weight: bold;
+    }
+
+    .variant-price {
+        color: #080902;
+        font-weight: bold;
+    }
+
+    .collapse .card-body {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+    }
+
+    .additional-info {
+        background-color: #0072dc;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+
+    .additional-info strong {
+        color: #ffffff;
+    }
+
+    .btn-custom {
+        background-color: #0072dc;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-custom:hover {
+        background-color: #495057;
+        color: #ffffff;
+    }
+    
+</style>
+
+<nav class="breadcrumb-container">
+    <ol class="breadcrumb" style="background-color: #0072dc; padding: 5px 10px; border-radius: 5px;">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}" style="text-decoration: none; color: white;">Home</a></li>
+        <li class="breadcrumb-item active" style="color: white;" aria-current="page">Products</li>
+    </ol>
+</nav>
+
+<div class="container product-container">
+    <div class="row">
+        <!-- Left Side: Product Images -->
+        <div class="col-lg-6 mb-4">
+            {% if product.images.all %}
+                <div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in product.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ product.name }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#productImageCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#productImageCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            {% else %}
+                <p>No images available.</p>
+            {% endif %}
+        </div>
+
+        <!-- Right Side: Product Details -->
+        <div class="col-lg-6">
+            <h1 class="product-title">{{ product.name }} {% if product.brand_name %}({{ product.brand_name }}) {% endif %} {{ product.type }}</h1>
+            <p class="product-description">{{ product.sub_description }}</p>
+
+            <div class="variant-container">
+                <h3>Select Your Dosage</h3>
+                {% for country, manufacturers in grouped_variants.items %}
+                    <div class="variant-header mb-2">
+                        <p>
+                            <strong>Country of Origin:</strong> {{ country.name }} 
+                            {% if country.flag %}
+                                <img src="{{ country.flag.url }}" alt="Country Flag" style="width: 20px; height: 15px;">
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% for manufacturer, variants in manufacturers.items %}
+                        <div class="manufacturer-section mb-3">
+                            <p><strong>Manufacturer:</strong> {{ manufacturer }}</p>
+                            <div class="form-group">
+                                <label for="variantSelect{{ forloop.counter }}">Choose a variant:</label>
+                                <select class="form-control mb-2 variant-select" id="variantSelect{{ forloop.counter }}">
+                                    {% for variant in variants %}
+                                        <option value="{% url 'add_to_cart' variant.id %}">
+                                            {{ variant.number_of_tablets }} Tablets - {{ variant.potency }} {{ variant.unit }} - ${{ variant.price_usd }}      
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-custom add-to-cart-btn" data-select-id="variantSelect{{ forloop.counter }}">
+                                Add to Cart
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            
+            
+        </div>
+    </div>
+
+    {% if product.how_to_use or product.side_effects or product.drug_interactions or product.precautions or product.labels.all %}
+    <div class="additional-info">
+        <h4>Additional Information</h4>
+        {% if product.how_to_use %}
+            <p><strong>How to Use:</strong> {{ product.how_to_use }}</p>
+        {% endif %}
+        
+        {% if product.side_effects %}
+            <p><strong>Side Effects:</strong> {{ product.side_effects }}</p>
+        {% endif %}
+        
+        {% if product.drug_interactions %}
+            <p><strong>Drug Interactions:</strong> {{ product.drug_interactions }}</p>
+        {% endif %}
+        
+        {% if product.precautions %}
+            <p><strong>Precautions:</strong> {{ product.precautions }}</p>
+        {% endif %}
+        
+        {% for label in product.labels.all %}
+            <p><strong>{{ label.label }}:</strong> {{ label.value }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const potencyElements = document.querySelectorAll('.potency');
+
+        potencyElements.forEach(element => {
+            const potencyValue = parseFloat(element.dataset.potency);
+            element.textContent = potencyValue % 1 === 0 
+                ? potencyValue.toString() 
+                : potencyValue.toFixed(1);
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add event listener to buttons
+        const buttons = document.querySelectorAll('.add-to-cart-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const selectId = button.getAttribute('data-select-id');
+                const selectElement = document.getElementById(selectId);
+                const selectedUrl = selectElement.value;
+
+                if (selectedUrl) {
+                    window.location.href = selectedUrl; // Navigate to the selected variant's add-to-cart URL
+                } else {
+                    alert("Please select a variant first.");
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load tz %}
+{% block title %}Order List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #0072dc; padding: 5px 10px; border-radius: 5px;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" style="text-decoration: none; color: white;">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff;">Order List</li>
+        </ol>
+    </nav>
+
+    <!-- Order List Title -->
+    <h2 class="text-center mb-4 text-white">Your Orders</h2>
+
+    <!-- Order List -->
+    <ul class="order-list mb-4">
+        {% for order in orders %}
+            <li class="order-item p-3" style="list-style: none;">
+                <h5 class="mb-3">Order ID: {{ order.id }}</h5>
+                <p><strong>Total:</strong> ${{ order.total_cost }}</p>
+                <p><strong>Status:</strong> {{ order.status }}</p>
+                <p><strong>Order Date:</strong> {{ order.created_at|localtime }}</p> <!-- Displaying the order date -->
+
+
+                <a href="{% url 'order_detail' order.id %}" class="btn custom-btn mt-3">View Details</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- CSS Styling -->
+<style>
+    .order-product-image {
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-list {
+        padding: 0;
+    }
+
+    .order-item {
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .order-item:hover {
+        background-color: #f1f1f1;
+        transform: translateY(-2px);
+    }
+
+    .order-details-list {
+        padding: 0;
+        margin-top: 10px;
+    }
+
+    .order-details-item {
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        background-color: #f9f9f9;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .order-details-item:hover {
+        background-color: #e9e9e9;
+    }
+
+    .custom-btn {
+        background-color: #000;
+        color: #d0ff00;
+        border-radius: 0.5rem;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .custom-btn:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .image-container {
+        margin-right: 1rem;
+    }
+
+    .d-flex {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+{% endblock %}

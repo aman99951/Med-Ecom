@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<style>
+    nav ol li a {
+        color: white;
+    }
+
+    .breadcrumb ol li .btn {
+        color: black; 
+        background-color: aliceblue;
+    }
+
+    .btn-hover {
+        color: #ffffff;
+        
+        border: 1px solid white;
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition for effects */
+    }
+
+    .btn-hover:hover {
+       /* background-color: #ffffff;  Change background on hover */
+        color: rgb(255, 255, 255); /* Change text color on hover */
+        text-decoration: underline;
+        border-color: #d0ff00; /* Change border color on hover */
+    }
+
+    @media (max-width: 768px) {
+        .input-group {
+            width: 100%; /* Full width on mobile */
+        }
+
+        .table th, .table td {
+            font-size: 14px; /* Smaller font size for mobile */
+        }
+
+        .text-end {
+            text-align: center; /* Center alignment on mobile */
+        }
+    }
+</style>
+
+<div class="container my-4">
+    <form method="POST" action="{% url 'cart' %}">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: #0072dc; padding: 5px 10px; border-radius: 5px;">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page" style="color: #ffffff; text-decoration: underline;">Your Cart</li>
+                <li class="ms-auto">
+                    <button type="submit" class="btn btn-sm btn-hover">Update Cart</button>
+                </li>
+            </ol>
+        </nav>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        {% if inventory_error_message %}
+            <div class="alert alert-warning" role="alert">
+                {{ inventory_error_message }}
+            </div>
+        {% endif %}
+
+        {% if cart_items %}
+            {% csrf_token %}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Variant</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        {% for item in cart_items %}
+                            <tr data-variant-id="{{ item.variant.id }}">
+                                <td>{{ item.variant.product.name }}</td>
+                                <td>{{ item.variant.number_of_tablets }} Tablets, <span class="potency" data-potency="{{ item.variant.potency }}">{{ item.variant.potency }}</span> {{ item.variant.unit.name }}</td>
+                                <td>
+                                    <input type="number" class="form-control quantity" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="1">
+                                </td>
+                                <td>${{ item.variant.price_usd }}</td>
+                                <td class="total-price">${{ item.total_price }}</td>
+                                <td>
+                                    <button type="submit" name="remove_item" value="{{ item.id }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center mt-4">
+                <div class="input-group mb-3" style="width: 100%; max-width: 300px;">
+                    <input type="text" class="form-control" name="discount_code" placeholder="Coupon code" aria-label="Discount Code">
+                    <button class="btn" style="background-color: #0072dc;color: #ffffff;" type="submit" name="apply_discount">Apply</button>
+                </div>
+                <div class="text-center text-sm-start mt-2 mt-sm-0">
+                    {% if cart.discount_code %}
+                        <button type="submit" class="btn btn-warning" name="remove_discount">Remove Discount</button>
+                        <h4 class="text-white bg-dark p-2">Discounted Total Price: $<span id="discounted-total">{{ total_price }}</span></h4>
+                    {% else %}
+                        <h4 class="text-white  p-2" style="background-color: #0072dc;color: #ffffff; border: 1px solid black; border-radius: 8px;">Total Price: $<span id="cart-total">{{ total_price }}</span></h4>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="text-end mt-5">
+              
+                <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+            </div>
+        </form>
+        {% else %}
+            <p class="text-center" style="font-size: larger; font-weight: bold; color: #0072dc; margin-top: 100px;">Your cart is empty. <a href="{% url 'home' %}">Continue Shopping</a></p>
+        {% endif %}
+    </form>
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Select all elements with the class 'potency'
+        const potencyElements = document.querySelectorAll('.potency');
+
+        potencyElements.forEach(element => {
+            // Get the potency value from the data attribute
+            const potencyValue = parseFloat(element.dataset.potency);
+            // Check if the potencyValue is a whole number
+            if (potencyValue % 1 === 0) {
+                // If it's a whole number, display without decimals
+                element.textContent = potencyValue.toString();
+            } else {
+                // If it has decimals, display with one decimal place
+                element.textContent = potencyValue.toFixed(1);
+            }
+        });
+    });
+</script>
+{% endblock %}
