@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-)s!d2ah@&0(9hg2&4q+ub9qq(9d=n@2&8-c%hqgebgz^#cg!gw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://med-ecom.onrender.com"]
+ALLOWED_HOSTS = ["med-ecom.onrender.com"]
+
 
 
 # Application definition
@@ -179,9 +180,9 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_TZ = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://med-ecom.onrender.com",
+    "med-ecom.onrender.com",
 ]
 CORS_ALLOWED_ORIGINS = [
-    "https://med-ecom.onrender.com",
+    "med-ecom.onrender.com",
 ]
 
