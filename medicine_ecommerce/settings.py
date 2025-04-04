@@ -181,4 +181,7 @@ USE_TZ = True
 CSRF_TRUSTED_ORIGINS = [
     "https://med-ecom.onrender.com",
 ]
+CORS_ALLOWED_ORIGINS = [
+    "https://med-ecom.onrender.com",
+]
 
