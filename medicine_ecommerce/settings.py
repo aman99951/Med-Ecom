@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-)s!d2ah@&0(9hg2&4q+ub9qq(9d=n@2&8-c%hqgebgz^#cg!gw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["https://med-ecom.onrender.com"]
 
 
 # Application definition
@@ -177,3 +177,8 @@ DEFAULT_FROM_EMAIL = 'Your Site Name <aman9995199@gmail.com>'
 
 TIME_ZONE = 'Asia/Kolkata'
 USE_TZ = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://med-ecom.onrender.com",
+]
+
