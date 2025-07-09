@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-)s!d2ah@&0(9hg2&4q+ub9qq(9d=n@2&8-c%hqgebgz^#cg!gw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["med-ecom.onrender.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -66,8 +66,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:19006",  # Change this to your React Native Metro Bundler address
-    "http://192.168.1.5:8081",  # If testing on a physical device
+ "*"
 ]
 
 # ✅ Ensure Django Sessions Work Properly
@@ -180,9 +179,9 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_TZ = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "med-ecom.onrender.com",
+    "*",
 ]
 CORS_ALLOWED_ORIGINS = [
-    "med-ecom.onrender.com",
+    "*",
 ]
 
